@@ -8,6 +8,3 @@ alias matlab='/Applications/MATLAB_R2020a.app/bin/matlab -nodesktop'
 alias vim=nvim
 alias d=docker
 alias dc=docker-compose
-
-# fzf config
-[ -f ~/.fzf.bash ] && source ~/.fzf.zsh
