@@ -1,0 +1,19 @@
+[user]
+    name = alexsocha
+    email = alex@alexsocha.com
+[alias]
+    st = status
+    cm = commit -m
+    co = checkout
+    com = checkout master
+    aa = add -A
+    rb = rebase
+    rbi = "!f(){ git rb -i HEAD~${1}; }; f"
+    ca = commit --amend
+    cane = commit --amend --no-edit
+    save = commit -m "SAVEPOINT"
+    lg = log --all --graph --decorate --oneline
+[core]
+    editor = vim
+[pull]
+    rebase = true
