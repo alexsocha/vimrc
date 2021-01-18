@@ -1,4 +1,4 @@
-*
+/*
 
 !.vimrc
 !.bashrc
@@ -6,3 +6,7 @@
 !.tmux.conf
 !.gitconfig
 !.gitignore
+
+!.config/
+.config/*
+!.config/nvim
