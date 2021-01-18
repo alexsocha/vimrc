@@ -11,7 +11,3 @@ alias dc=docker-compose
 
 # fzf config
 [ -f ~/.fzf.bash ] && source ~/.fzf.zsh
-
-# extra config options
-source ~/.bash_profile
-

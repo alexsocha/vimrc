@@ -1,2 +1,2 @@
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source ~/.bashrc
+source ~/.bash_profile
