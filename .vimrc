@@ -26,9 +26,10 @@ filetype plugin on
 
 " === Plugin Config ===
 
-autocmd vimenter * NERDTree
-autocmd vimenter * wincmd p
 let NERDTreeShowHidden=1
+let NERDTreeQuitOnOpen=1
+
+let NERDTreeWinPos='right'
 let NERDTreeIgnore=['\.DS_Store']
 
 set noshowmode
@@ -108,7 +109,18 @@ let mapleader = " "
 " file navigation
 nnoremap <leader><space> :call fzf#run(fzf#wrap({'source': 'ag -g ""'}))<CR>
 nnoremap <leader><tab> :Buffers<CR>
+nnoremap <leader>a :NERDTreeToggle<CR>
 nnoremap <leader><esc> <C-^>
+
+" tab autocomplete
+function! Tab_Or_Complete()
+  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+    return "\<C-p>"
+  else
+    return "\<Tab>"
+  endif
+endfunction
+inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 
 " typescipt
 autocmd FileType typescript nmap <buffer> <leader>d :TsuDefinition<CR>
@@ -116,12 +128,23 @@ autocmd FileType typescript nmap <buffer> <leader>b :TsuGoBack<CR>
 autocmd FileType typescript nmap <buffer> <leader>h :echo tsuquyomi#hint()<CR>
 autocmd FileType typescript nmap <buffer> <leader>r :TsuRenameSymbol<CR>
 autocmd FileType typescript nmap <buffer> <leader>m :TsuImport<CR>
-autocmd FileType typescript inoremap <buffer> <C-Space> <C-x><C-o>
+autocmd FileType typescript inoremap <buffer> <C-p> <C-x><C-o>
 
 " python
 autocmd FileType python nmap <buffer> <leader>b <C-t>
+let g:jedi#completions_command = "<ctrl>p"
+let g:jedi#documentation_command = "<leader>i"
 
-" tab to change windows and buffers
+" split and resize
+nnoremap <Tab>o :vsplit<CR>
+nnoremap <Tab>op :split<CR>
+
+nnoremap <Tab>n :vertical resize +10<CR>
+nnoremap <Tab>. :vertical resize -10<CR>
+nnoremap <Tab>m :resize +10<CR>
+nnoremap <Tab>, :resize -10<CR>
+
+" change windows and
 nnoremap <tab> <c-w>
 nnoremap <tab><tab> <c-w><c-w>
 

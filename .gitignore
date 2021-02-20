@@ -6,6 +6,7 @@
 !.tmux.conf
 !.gitconfig
 !.gitignore
+!.my-zsh-theme
 
 !.config/
 .config/*
