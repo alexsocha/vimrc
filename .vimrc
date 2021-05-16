@@ -10,6 +10,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
 Plug 'tpope/vim-surround'
 Plug 'michaeljsmith/vim-indent-object'
+Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'davidhalter/jedi-vim'
 Plug 'pangloss/vim-javascript'
@@ -114,8 +115,8 @@ nnoremap <leader><esc> <C-^>
 
 " tab autocomplete
 function! Tab_Or_Complete()
-  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
-    return "\<C-p>"
+  if col('.')>1 && strpart(getline('.'), col('.')-2, 1) =~ '\w\|\.'
+    return "\<C-x>\<C-o>"
   else
     return "\<Tab>"
   endif
@@ -132,7 +133,6 @@ autocmd FileType typescript inoremap <buffer> <C-p> <C-x><C-o>
 
 " python
 autocmd FileType python nmap <buffer> <leader>b <C-t>
-let g:jedi#completions_command = "<ctrl>p"
 let g:jedi#documentation_command = "<leader>i"
 
 " split and resize

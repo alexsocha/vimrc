@@ -5,3 +5,5 @@ ZSH_THEME=""
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
 source ~/.my-zsh-theme
+
+source ~/.bashrc
