@@ -1,6 +1,6 @@
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export ZSH="/Users/Alex/.oh-my-zsh"
+export ZSH="/Users/alexsocha/.oh-my-zsh"
 ZSH_THEME=""
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
