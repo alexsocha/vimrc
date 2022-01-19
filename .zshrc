@@ -1,9 +1,19 @@
+# oh-my-zsh
 export ZSH="/Users/alexsocha/.oh-my-zsh"
 ZSH_THEME=""
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
 source ~/.my-zsh-theme
 
-source ~/.bashrc
+# env
+export COMPOSE_DOCKER_CLI_BUILD=1
+export DOCKER_BUILDKIT=1
 
+# aliases
+alias vim=nvim
+alias dc=docker-compose
+alias ctags='/usr/local/bin/ctags'
+alias matlab='/Applications/MATLAB_R2020a.app/bin/matlab -nodesktop'
+
+# fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
