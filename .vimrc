@@ -3,6 +3,7 @@ let g:onedark_termcolors=256
 call plug#begin('~/vim/plugged')
 
 Plug '/opt/homebrew/bin/fzf'
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'joshdick/onedark.vim'
