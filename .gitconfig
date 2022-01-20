@@ -6,6 +6,7 @@
     cm = commit -m
     co = checkout
     com = checkout master
+    cob = "!f(){ git checkout $(git branch | fzf ); }; f"
     aa = add -A
     rb = rebase
     rbi = "!f(){ git rb -i HEAD~${1}; }; f"
@@ -17,3 +18,11 @@
     editor = vim
 [pull]
     rebase = true
+[push]
+    default = current
+[diff]
+    tool = vimdiff
+[difftool]
+    prompt = false
+[rebase]
+    autosquash = true
