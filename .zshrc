@@ -1,3 +1,5 @@
+# start command: /opt/homebrew/bin/tmux new-session -A -s 0
+
 # shell
 export SHELL="$(ps -p $$ -oargs=)"
 
