@@ -15,10 +15,10 @@ export DOCKER_BUILDKIT=1
 # aliases
 alias vim=nvim
 alias dc=docker-compose
-alias ctags='/usr/local/bin/ctags'
-alias matlab='/Applications/MATLAB_R2020a.app/bin/matlab -nodesktop'
-alias ibrew='/opt/homebrew-rosetta/bin/brew'
-alias izsh='/opt/homebrew-rosetta/bin/zsh'
+alias ctags="/usr/local/bin/ctags"
+alias matlab="/Applications/MATLAB_R2020a.app/bin/matlab -nodesktop"
+alias ibrew="/opt/homebrew-rosetta/bin/brew"
+alias izsh="/opt/homebrew-rosetta/bin/zsh"
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
