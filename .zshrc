@@ -10,9 +10,13 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 source ~/.my-zsh-theme
 
-# env
+# docker
 export COMPOSE_DOCKER_CLI_BUILD=1
 export DOCKER_BUILDKIT=1
+
+# jenv
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
 
 # aliases
 alias vim=nvim
