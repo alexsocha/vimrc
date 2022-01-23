@@ -3,6 +3,9 @@
 # shell
 export SHELL="$(ps -p $$ -oargs=)"
 
+# brew
+export PATH="/opt/homebrew/bin:$PATH"
+
 # oh-my-zsh
 export ZSH="/Users/alexsocha/.oh-my-zsh"
 ZSH_THEME=""
