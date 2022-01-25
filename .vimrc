@@ -12,6 +12,7 @@ Plug 'itchyny/vim-gitbranch'
 Plug 'tpope/vim-surround'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'sheerun/vim-polyglot'
 
 Plug 'davidhalter/jedi-vim'
 Plug 'pangloss/vim-javascript'
