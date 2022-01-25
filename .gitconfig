@@ -15,7 +15,7 @@
     save = commit -m "SAVEPOINT"
     lg = log --all --graph --decorate --oneline
 [core]
-    editor = vim
+    editor = nvim
 [pull]
     rebase = true
 [push]
