@@ -14,10 +14,8 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'sheerun/vim-polyglot'
 
-Plug 'davidhalter/jedi-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pangloss/vim-javascript'
-Plug 'leafgarland/typescript-vim'
-Plug 'Quramy/tsuquyomi'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'lervag/vimtex'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
@@ -53,16 +51,13 @@ let g:lightline = {
 let g:onedark_terminal_italics=1
 colorscheme onedark
 
-let g:jedi#popup_on_dot=0
-let g:jedi#show_call_signatures=2
-let g:jedi#smart_auto_mappings=0
-
-let g:tsuquyomi_disable_default_mappings=1
-autocmd BufEnter *.tsx set filetype=typescript
-
 let g:vimtex_view_method = 'skim'
 
 let g:mkdp_auto_close = 0
+
+autocmd BufEnter *.tsx set filetype=typescript
+autocmd BufReadPost *.kt setlocal filetype=kotlin
+
 
 " === Standard Config ===
 
@@ -84,6 +79,9 @@ let &t_EI="\e[1 q"
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 
+" scrolling
+set scrolloff=5
+
 " key timeouts
 set timeoutlen=1000
 set ttimeoutlen=0
@@ -97,7 +95,7 @@ autocmd FileType python set textwidth=88
 " indentation
 set autoindent
 set shiftwidth=4 tabstop=8 softtabstop=0 expandtab smarttab
-autocmd BufRead,BufNewFile *.json setlocal shiftwidth=2
+" autocmd BufRead,BufNewFile *.json setlocal shiftwidth=2
 
 set undodir=~/.vim/undo
 set undofile
@@ -115,27 +113,31 @@ nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>a :NERDTreeToggle<CR>
 nnoremap <leader><esc> <C-^>
 
-" tab autocomplete
-function! Tab_Or_Complete()
-  if col('.')>1 && strpart(getline('.'), col('.')-2, 1) =~ '\w\|\.'
-    return "\<C-x>\<C-o>"
-  else
-    return "\<Tab>"
-  endif
+" coc
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 
-" typescipt
-autocmd FileType typescript nmap <buffer> <leader>d :TsuDefinition<CR>
-autocmd FileType typescript nmap <buffer> <leader>b :TsuGoBack<CR>
-autocmd FileType typescript nmap <buffer> <leader>h :echo tsuquyomi#hint()<CR>
-autocmd FileType typescript nmap <buffer> <leader>r :TsuRenameSymbol<CR>
-autocmd FileType typescript nmap <buffer> <leader>m :TsuImport<CR>
-autocmd FileType typescript inoremap <buffer> <C-p> <C-x><C-o>
+let g:coc_disable_startup_warning = 1
+nmap <silent> ge <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>d <Plug>(coc-definition)
+nmap <silent> <leader>n <Plug>(coc-references)
+nmap <silent> <leader>r <Plug>(coc-rename)
+nmap <silent> <leader>h :call CocActionAsync('doHover')<CR>
 
-" python
-autocmd FileType python nmap <buffer> <leader>b <C-t>
-let g:jedi#documentation_command = "<leader>i"
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><s-Tab> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" auto import
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+
+" jumps
+nmap <silent> <leader>e <C-o>
+nmap <silent> <C-m> <C-o>
 
 " split and resize
 nnoremap <Tab>o :vsplit<CR>
