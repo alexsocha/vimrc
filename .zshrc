@@ -21,6 +21,10 @@ export DOCKER_BUILDKIT=1
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
 
+# pyenv
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path --no-rehash)"
+
 # nvm
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
