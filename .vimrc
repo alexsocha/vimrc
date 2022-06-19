@@ -109,8 +109,12 @@ set directory=~/.vim/swp
 let mapleader = " "
 
 " file navigation
-nnoremap <leader>f :call fzf#run(fzf#wrap({'source': 'ag -g ""'}))<CR>
+nnoremap <leader>f :GFiles<CR>
+nnoremap <leader>g :Files<CR>
+nnoremap <leader>k :BLines<CR>
+nnoremap <leader>l :Lines<CR>
 nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>s :Rg<CR>
 nnoremap <leader>a :NERDTreeToggle<CR>
 nnoremap <leader><esc> <C-^>
 
